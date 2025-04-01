@@ -14,44 +14,57 @@
 
         body {
             background-color: #f5f5f5;
-            color: #333;
             text-align: center;
+            color: #333;
+            font-size: 16px;
         }
 
         nav {
             background-color: #d9c2af;
-            padding: 15px;
+            padding: 15px 0;
+            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             margin: 0 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: black;
+            color: #333;
         }
 
         .container {
-            padding-top: 80px;
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .product-page {
             max-width: 800px;
-            margin: auto;
+            width: 100%;
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-page:hover {
+            transform: scale(1.05);
         }
 
         .product-page img {
@@ -59,50 +72,75 @@
             height: 300px;
             object-fit: cover;
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-page img:hover {
+            transform: scale(1.1);
         }
 
         .product-page h1 {
             margin: 20px 0;
-            font-size: 24px;
+            font-size: 28px;
+            color: #333;
         }
 
         .product-page p {
             color: #666;
             margin-bottom: 20px;
+            font-size: 16px;
         }
 
         .pret {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .cantitate {
             margin-bottom: 20px;
         }
 
-        .buy-btn, .back-btn {
+        .cantitate {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .cantitate label {
+            font-weight: bold;
+        }
+
+        .cantitate input {
+            width: 60px;
+            padding: 8px;
+            text-align: center;
+            margin-left: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .button, .back-btn {
             display: inline-block;
-            padding: 10px 15px;
+            padding: 12px 18px;
             background: #d9c2af;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
             margin: 10px;
+            border: none;
+            cursor: pointer;
         }
 
-        .buy-btn:hover, .back-btn:hover {
+        .button:hover, .back-btn:hover {
             background: #c0a88c;
+            transform: scale(1.05);
         }
 
-        input[type="number"] {
-            width: 60px;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .back-btn {
+            background: #aaa;
+        }
+
+        .back-btn:hover {
+            background: #888;
         }
     </style>
 </head>
@@ -111,39 +149,38 @@
         <a href="hui.html">Acasă</a>
         <a href="pagina2.html">Magazin</a>
         <a href="contact.html">Contact</a>
-        <a href="cos.html">Cos</a>
+        <a href="cos.html">Coș</a>
     </nav>
 
     <div class="container">
         <div class="product-page">
-            <img src="buci condimentate.jpg" alt="Nuci condimentate">
-            <h1>Nuci Condimentate</h1>
-            <p>Gust intens de nuci, perfect pentru iubitorii de snacksuri.</p>
-            <div class="pret">1099 EUR</div>
+            <img src="napolitane.jpg" alt="Napolitane picante">
+            <h1>Napolitane picante</h1>
+            <p>Un gust exploziv, perfect pentru cei care iubesc condimentele tari!</p>
+            <div class="pret">4 EUR</div>
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
                 <input type="number" id="cantitate" name="cantitate" value="1" min="1">
             </div>
-            <button class="buy-btn" onclick="addProductToCart()">Adaugă în Coș</button>
+            <button class="button" onclick="addProductToCart()">Adaugă în Coș</button>
             <a href="pagina2.html" class="back-btn">Înapoi la magazin</a>
         </div>
     </div>
 
     <script>
         function addProductToCart() {
-            const quantity = parseInt(document.getElementById("cantitate").value);
-            const product = {
-                id: "nuci_condimentate",  // ID unic pentru produs
-                name: "Nuci Condimentate",
-                price: 1099,
+            var quantity = parseInt(document.getElementById("cantitate").value);
+            var product = {
+                id: "napolitane_picante",
+                name: "Napolitane picante",
+                price: 4,
                 quantity: quantity
             };
 
-            // Obținem coșul de cumpărături din localStorage sau creăm unul nou
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-            // Căutăm produsul în coș și actualizăm cantitatea dacă există
-            const existingProduct = cart.find(item => item.id === product.id);
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
+            var existingProduct = cart.find(function(item) {
+                return item.id === product.id;
+            });
 
             if (existingProduct) {
                 existingProduct.quantity += product.quantity;

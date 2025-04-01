@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Mijuletul de Sâmbătă</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 20px 0;
+            font-size: 32px;
+        }
+
+        .cart-summary {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-summary p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .cart-summary .total-price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #d9c2af;
+            color: white;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .button:hover {
+            background-color: #c0a88c;
+        }
+
+        #paypal-button-container {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=EUR"></script>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <div class="cart-summary">
+        <h2>Coșul de Cumpărături</h2>
+        <div id="cart-items"></div>
+        <div class="total-price">Total: 0 EUR</div>
+    </div>
+
+    <div id="paypal-button-container"></div>
+
+    <script>
+        // Functie care afișează articolele din coșul de cumpărături
+        function renderCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartItemsContainer = document.getElementById("cart-items");
+            const totalPriceContainer = document.querySelector(".total-price");
+            let totalPrice = 0;
+
+            // Golim containerul înainte de a-l reafișa
+            cartItemsContainer.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Coșul tău este gol.</p>";
+                totalPriceContainer.innerHTML = "Total: 0 EUR";
+                return;
+            }
+
+            cart.forEach(item => {
+                let itemDiv = document.createElement("div");
+                itemDiv.innerHTML = `<p>${item.name} - ${item.quantity} x ${item.price} EUR</p>`;
+                cartItemsContainer.appendChild(itemDiv);
+                totalPrice += item.price * item.quantity;
+            });
+
+            totalPriceContainer.innerHTML = `Total: ${totalPrice} EUR`;
+
+            renderPaypal(totalPrice); // Afisăm butonul PayPal cu totalul actualizat
+        }
+
+        // Functie pentru a integra butonul PayPal
+        function renderPaypal(price) {
+            if (price === 0) {
+                document.getElementById("paypal-button-container").innerHTML = "";
+                return;
+            }
+            paypal
+                .Buttons({
+                    style: {
+                        shape: "rect",
+                        color: "gold",
+                        layout: "vertical",
+                        label: "paypal",
+                    },
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{ amount: { currency_code: "EUR", value: price } }],
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (orderData) {
+                            // Golim coșul după ce plata a fost aprobată
+                            localStorage.setItem("cart", JSON.stringify([]));
+                            renderCart(); // Reafișăm coșul gol
+                            const element = document.getElementById("paypal-button-container");
+                            element.innerHTML = "<h3>Mulțumim pentru plata ta!</h3>";
+                        });
+                    },
+                    onError: function (err) {
+                        console.log(err);
+                    },
+                })
+                .render("#paypal-button-container");
+        }
+
+        // Apelăm funcția pentru a reda coșul la încărcarea paginii
+        window.onload = renderCart;
+    </script>
+</body>
+</html>

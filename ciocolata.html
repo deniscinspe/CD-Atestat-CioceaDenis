@@ -14,8 +14,8 @@
 
         body {
             background-color: #f5f5f5;
-            color: #333;
             text-align: center;
+            color: #333;
         }
 
         nav {
@@ -25,7 +25,7 @@
             width: 100%;
             top: 0;
             left: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
@@ -56,7 +56,7 @@
 
         .product-page img {
             width: 100%;
-            height: 300px;
+            height: auto;
             object-fit: cover;
             border-radius: 10px;
         }
@@ -75,10 +75,6 @@
             font-size: 20px;
             font-weight: bold;
             margin: 10px 0;
-        }
-
-        .cantitate {
-            margin-bottom: 20px;
         }
 
         .buy-btn, .back-btn {
@@ -116,10 +112,10 @@
 
     <div class="container">
         <div class="product-page">
-            <img src="buci condimentate.jpg" alt="Nuci condimentate">
-            <h1>Nuci Condimentate</h1>
-            <p>Gust intens de nuci, perfect pentru iubitorii de snacksuri.</p>
-            <div class="pret">1099 EUR</div>
+            <img src="ciocolata.jpg" alt="Ciocolata">
+            <h1>Ciocolata</h1>
+            <p>Gust intens și picant! Perfect pentru iubitorii de senzații tari.</p>
+            <div class="pret">10 EUR</div>
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
                 <input type="number" id="cantitate" name="cantitate" value="1" min="1">
@@ -132,17 +128,19 @@
     <script>
         function addProductToCart() {
             const quantity = parseInt(document.getElementById("cantitate").value);
+            if (quantity < 1) {
+                alert("Cantitatea trebuie să fie cel puțin 1.");
+                return;
+            }
+
             const product = {
-                id: "nuci_condimentate",  // ID unic pentru produs
-                name: "Nuci Condimentate",
-                price: 1099,
+                id: "ciocolata1",
+                name: "Ciocolata",
+                price: 10,
                 quantity: quantity
             };
 
-            // Obținem coșul de cumpărături din localStorage sau creăm unul nou
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-            // Căutăm produsul în coș și actualizăm cantitatea dacă există
             const existingProduct = cart.find(item => item.id === product.id);
 
             if (existingProduct) {

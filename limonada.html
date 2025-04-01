@@ -1,94 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijuletul de Sambata</title>
+    <title>Mijuletul de Sâmbătă</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            background-image: url('https://img.freepik.com/premium-photo/empty-top-wooden-table-with-blurred-counter-bar-bottles_254791-936.jpg?semt=ais_hybrid'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: black;
+            background-color: #f5f5f5;
             text-align: center;
+            color: #333;
         }
 
         nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 60px;
-            background-color: rgba(217, 194, 175, 0.9);
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #d9c2af;
+            padding: 15px;
+            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
-            font-size: 20px;
             color: white;
-            margin: 0 20px;
             text-decoration: none;
+            font-size: 20px;
+            margin: 0 15px;
             font-weight: bold;
-            transition: color 0.3s ease-in-out;
+            transition: color 0.3s;
         }
 
         nav a:hover {
             color: black;
         }
 
-        
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            padding-top: 60px; 
+            padding-top: 80px;
         }
 
-        .corp1 {
-            font-size: 50px;
-            text-align: center;
-            font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.7);
+        .product-page {
+            max-width: 800px;
+            margin: auto;
+            background: white;
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .corp1 p {
-            margin: 10px 0;
+        .product-page img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
-    
-        .explore-btn {
-            background-color: white;
-            border: 2px solid black;
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-size: 18px;
+        .product-page h1 {
+            margin: 20px 0;
+            font-size: 24px;
+        }
+
+        .product-page p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .pret {
+            font-size: 22px;
             font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
+            margin-bottom: 15px;
         }
 
-        .explore-btn a {
+        .cantitate {
+            margin: 15px 0;
+        }
+
+        .cantitate label {
+            font-weight: bold;
+        }
+
+        .cantitate input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            margin-left: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .button, .back-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #d9c2af;
+            color: white;
             text-decoration: none;
-            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+            margin: 10px;
+            cursor: pointer;
         }
 
-        .explore-btn:hover {
-            background-color: rgb(217, 194, 175);
+        .button:hover, .back-btn:hover {
+            background: #c0a88c;
+            transform: translateY(-2px);
+        }
+
+        .button:active, .back-btn:active {
+            transform: translateY(2px);
         }
     </style>
 </head>
@@ -97,6 +124,53 @@
         <a href="hui.html">Acasă</a>
         <a href="pagina2.html">Magazin</a>
         <a href="contact.html">Contact</a>
+        <a href="cos.html">Coș</a>
     </nav>
-    </body>
-    </html>
+
+    <div class="container">
+        <div class="product-page">
+            <img src="drink1.png" alt="Limonada">
+            <h1>Limonada</h1>
+            <p>Lamaie proaspătă, răcoritoare.</p>
+            <div class="pret">3 EUR</div>
+            <div class="cantitate">
+                <label for="cantitate">Cantitate:</label>
+                <input type="number" id="cantitate" name="cantitate" value="1" min="1">
+            </div>
+            <button class="button" onclick="addProductToCart()">Adaugă în Coș</button>
+            <a href="pagina2.html" class="back-btn">Înapoi la magazin</a>
+        </div>
+    </div>
+
+    <script>
+        function addProductToCart() {
+            var quantity = parseInt(document.getElementById("cantitate").value);
+            if (isNaN(quantity) || quantity < 1) {
+                alert("Vă rugăm să introduceți o cantitate validă!");
+                return;
+            }
+
+            var product = {
+                id: "limonada_001", // ID unic pentru produs
+                name: "Limonada",
+                price: 3, 
+                quantity: quantity
+            };
+
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
+            var existingProduct = cart.find(function(item) {
+                return item.id === product.id;
+            });
+
+            if (existingProduct) {
+                existingProduct.quantity += product.quantity;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Produsul a fost adăugat în coș!");
+        }
+    </script>
+</body>
+</html>

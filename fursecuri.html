@@ -14,13 +14,14 @@
 
         body {
             background-color: #f5f5f5;
-            color: #333;
             text-align: center;
+            color: #333;
         }
 
         nav {
             background-color: #d9c2af;
             padding: 15px;
+            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
@@ -52,6 +53,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .product-page img {
@@ -59,6 +61,7 @@
             height: 300px;
             object-fit: cover;
             border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .product-page h1 {
@@ -66,43 +69,49 @@
             font-size: 24px;
         }
 
-        .product-page p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .pret {
-            font-size: 20px;
+        .product-page .pret {
+            font-size: 22px;
             font-weight: bold;
-            margin: 10px 0;
+            margin-bottom: 20px;
         }
 
         .cantitate {
-            margin-bottom: 20px;
+            margin: 15px 0;
         }
 
-        .buy-btn, .back-btn {
+        .cantitate label {
+            font-weight: bold;
+        }
+
+        .cantitate input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            margin-left: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .button, .back-btn {
             display: inline-block;
-            padding: 10px 15px;
+            padding: 12px 20px;
             background: #d9c2af;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
             margin: 10px;
+            cursor: pointer;
         }
 
-        .buy-btn:hover, .back-btn:hover {
+        .button:hover, .back-btn:hover {
             background: #c0a88c;
+            transform: translateY(-2px);
         }
 
-        input[type="number"] {
-            width: 60px;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .button:active, .back-btn:active {
+            transform: translateY(2px);
         }
     </style>
 </head>
@@ -111,47 +120,56 @@
         <a href="hui.html">Acasă</a>
         <a href="pagina2.html">Magazin</a>
         <a href="contact.html">Contact</a>
-        <a href="cos.html">Cos</a>
+        <a href="cos.html">Coș</a>
     </nav>
 
     <div class="container">
         <div class="product-page">
-            <img src="buci condimentate.jpg" alt="Nuci condimentate">
-            <h1>Nuci Condimentate</h1>
-            <p>Gust intens de nuci, perfect pentru iubitorii de snacksuri.</p>
-            <div class="pret">1099 EUR</div>
+            <img src="fursecuri.jpg" alt="Fursecuri ciudate">
+            <h1>Fursecuri ciudate</h1>
+            <div class="pret">10 EUR</div>
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
                 <input type="number" id="cantitate" name="cantitate" value="1" min="1">
             </div>
-            <button class="buy-btn" onclick="addProductToCart()">Adaugă în Coș</button>
+            <button class="button" onclick="addProductToCart()">Adaugă în Coș</button>
             <a href="pagina2.html" class="back-btn">Înapoi la magazin</a>
         </div>
     </div>
 
     <script>
         function addProductToCart() {
-            const quantity = parseInt(document.getElementById("cantitate").value);
-            const product = {
-                id: "nuci_condimentate",  // ID unic pentru produs
-                name: "Nuci Condimentate",
-                price: 1099,
+            var quantity = parseInt(document.getElementById("cantitate").value);
+            if (isNaN(quantity) || quantity < 1) {
+                alert("Vă rugăm să introduceți o cantitate validă!");
+                return;
+            }
+
+            var product = {
+                id: "fursecuri_001", // ID unic pentru produs
+                name: "Fursecuri ciudate",
+                price: 10,  // Prețul corect al produsului
                 quantity: quantity
             };
 
-            // Obținem coșul de cumpărături din localStorage sau creăm unul nou
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            // Încarcă coșul din LocalStorage sau un array gol dacă nu există coșul
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            // Căutăm produsul în coș și actualizăm cantitatea dacă există
-            const existingProduct = cart.find(item => item.id === product.id);
+            // Verifică dacă produsul există deja în coș
+            var existingProduct = cart.find(function(item) {
+                return item.id === product.id;
+            });
 
+            // Dacă produsul există, actualizează cantitatea
             if (existingProduct) {
                 existingProduct.quantity += product.quantity;
             } else {
-                cart.push(product);
+                cart.push(product); // Adaugă produsul în coș dacă nu există
             }
 
+            // Salvează coșul actualizat în LocalStorage
             localStorage.setItem("cart", JSON.stringify(cart));
+
             alert("Produsul a fost adăugat în coș!");
         }
     </script>

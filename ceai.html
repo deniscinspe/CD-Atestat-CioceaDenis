@@ -77,10 +77,6 @@
             margin: 10px 0;
         }
 
-        .cantitate {
-            margin-bottom: 20px;
-        }
-
         .buy-btn, .back-btn {
             display: inline-block;
             padding: 10px 15px;
@@ -116,10 +112,10 @@
 
     <div class="container">
         <div class="product-page">
-            <img src="buci condimentate.jpg" alt="Nuci condimentate">
-            <h1>Nuci Condimentate</h1>
-            <p>Gust intens de nuci, perfect pentru iubitorii de snacksuri.</p>
-            <div class="pret">1099 EUR</div>
+            <img src="ceai.jpg" alt="Ceai de habanero">
+            <h1>Ceai de Habanero</h1>
+            <p>Un ceai cu un gust picant, ideal pentru iubitorii de senzații tari.</p>
+            <div class="pret">10 EUR</div>
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
                 <input type="number" id="cantitate" name="cantitate" value="1" min="1">
@@ -132,14 +128,19 @@
     <script>
         function addProductToCart() {
             const quantity = parseInt(document.getElementById("cantitate").value);
+
+            if (quantity < 1) {
+                alert("Cantitatea trebuie să fie cel puțin 1.");
+                return;
+            }
+
             const product = {
-                id: "nuci_condimentate",  // ID unic pentru produs
-                name: "Nuci Condimentate",
-                price: 1099,
+                id: "ceai_habanero",  // Folosește un ID unic pentru produs
+                name: "Ceai de Habanero",
+                price: 10,
                 quantity: quantity
             };
 
-            // Obținem coșul de cumpărături din localStorage sau creăm unul nou
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
             // Căutăm produsul în coș și actualizăm cantitatea dacă există
