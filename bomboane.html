@@ -133,16 +133,14 @@
         function addProductToCart() {
             const quantity = parseInt(document.getElementById("cantitate").value);
             const product = {
-                id: "bomboane_picante",  // ID unic pentru produs
+                id: "bomboane_picante",  
                 name: "Bomboane Picante",
                 price: 10,
                 quantity: quantity
             };
 
-            // Obținem coșul de cumpărături din localStorage sau creăm unul nou
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            // Căutăm produsul în coș și actualizăm cantitatea dacă există
             const existingProduct = cart.find(item => item.id === product.id);
 
             if (existingProduct) {
