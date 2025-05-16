@@ -1,117 +1,204 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijuletul de Sâmbătă</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SnackVibe - Suc de ardei iute</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             background-color: #f5f5f5;
-            text-align: center;
-            color: #333;
+            color: #3e3e3e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         nav {
-            background-color: #d9c2af;
+            background-color: #a97c50;
             padding: 15px;
+            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
-            color: white;
+            color: #fff9f4;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             margin: 0 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: black;
+            color: #ffe6cc;
         }
 
         .container {
-            padding-top: 80px;
+            flex-grow: 1;
+            padding-top: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         .product-page {
-            max-width: 800px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 720px;
+            width: 100%;
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
             text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-page:hover {
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
         }
 
         .product-page img {
             width: 100%;
-            max-height: 300px;
+            max-height: 320px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .product-page h1 {
-            margin: 20px 0;
-            font-size: 24px;
+            font-size: 28px;
+            color: #5b3e1b;
+            margin-bottom: 12px;
         }
 
         .product-page p {
-            color: #666;
-            margin-bottom: 20px;
+            color: #7a6a5f;
+            font-size: 17px;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
 
         .pret {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #a97c50;
+            margin-bottom: 20px;
         }
 
         .cantitate {
-            margin: 15px 0;
+            margin-bottom: 25px;
         }
 
         .cantitate label {
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 10px;
         }
 
         .cantitate input {
-            width: 50px;
-            padding: 5px;
+            width: 70px;
+            padding: 7px 10px;
+            font-size: 16px;
+            border: 2px solid #d9c2af;
+            border-radius: 6px;
             text-align: center;
-            margin-left: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .cantitate input:focus {
+            border-color: #a97c50;
+            outline: none;
         }
 
         .button, .back-btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #d9c2af;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background 0.3s;
-            margin: 10px;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 30px;
             border: none;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            user-select: none;
         }
 
-        .button:hover, .back-btn:hover {
-            background: #c0a88c;
+        .button {
+            background-color: #a97c50;
+            color: #fff;
+            margin-right: 15px;
+            box-shadow: 0 4px 10px rgba(169, 124, 80, 0.5);
+        }
+
+        .button:hover {
+            background-color: #8c6642;
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            background-color: #d9c2af;
+            color: #3e2f2f;
+            box-shadow: 0 4px 10px rgba(217, 194, 175, 0.5);
+        }
+
+        .back-btn:hover {
+            background-color: #c0a88c;
+            color: #1a0e00;
+            transform: scale(1.05);
+        }
+
+        /* Toast notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #4BB543;
+            color: white;
+            text-align: center;
+            border-radius: 30px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1001;
+            left: 50%;
+            bottom: 40px;
+            transform: translateX(-50%);
+            font-size: 17px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .product-page {
+                padding: 20px 15px;
+            }
+
+            nav a {
+                font-size: 16px;
+                margin: 0 10px;
+            }
+
+            .cantitate input {
+                width: 60px;
+            }
         }
     </style>
 </head>
@@ -123,25 +210,54 @@
         <a href="cos.html">Coș</a>
     </nav>
 
-    <div class="container">
-        <div class="product-page">
-            <img src="suc.jpg" alt="Suc de ardei iute">
+    <main class="container" role="main">
+        <article class="product-page" aria-label="Detalii produs Suc de ardei iute">
+            <img src="suc.jpg" alt="Sticlă cu suc de ardei iute"style="height: 300px;width: 300px;" />
             <h1>Suc de ardei iute</h1>
             <p>O combinație unică de arome îndrăznețe, perfectă pentru iubitorii de senzații tari!</p>
-            <div class="pret">2 EUR</div>
+            <div class="pret" aria-live="polite" aria-atomic="true">2 EUR</div>
+
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
-                <input type="number" id="cantitate" name="cantitate" value="1" min="1">
+                <input 
+                    type="number" 
+                    id="cantitate" 
+                    name="cantitate" 
+                    value="1" 
+                    min="1" 
+                    aria-describedby="cantitateHelp"
+                />
+                <span id="cantitateHelp" class="sr-only">Introduceți numărul de bucăți dorite, minim 1</span>
             </div>
-            <button class="button" onclick="addProductToCart()">Adaugă în Coș</button>
-            <a href="pagina2.html" class="back-btn">Înapoi la magazin</a>
-        </div>
-    </div>
+
+            <button class="button" onclick="addProductToCart()" aria-label="Adaugă Suc de ardei iute în coș">Adaugă în Coș</button>
+            <a href="pagina2.html" class="back-btn" role="link" aria-label="Înapoi la magazin">Înapoi la magazin</a>
+        </article>
+    </main>
+
+    <div id="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
     <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
         function addProductToCart() {
-            let quantity = parseInt(document.getElementById("cantitate").value);
-            let product = {
+            const quantityInput = document.getElementById("cantitate");
+            let quantity = parseInt(quantityInput.value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                alert("Te rog să introduci o cantitate validă (minim 1).");
+                quantityInput.focus();
+                return;
+            }
+
+            const product = {
                 id: "suc_ardei_iute",
                 name: "Suc de ardei iute",
                 price: 2,
@@ -158,8 +274,21 @@
             }
 
             localStorage.setItem("cart", JSON.stringify(cart));
-            alert("Produsul a fost adăugat în coș!");
+            showToast("Produsul a fost adăugat în coș!");
         }
     </script>
+
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+    </style>
 </body>
 </html>

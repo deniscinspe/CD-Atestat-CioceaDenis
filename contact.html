@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Mijuletul de Sâmbătă</title>
+    <title>Contact - SnackVibe</title>
     <style>
         * {
             margin: 0;
@@ -23,27 +23,28 @@
         }
 
         nav {
-            background-color: rgba(217, 194, 175, 0.9);
+            background-color: #a97c50;
             padding: 15px;
             text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
-            color: white;
+            color: #fff9f4;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             margin: 0 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: black;
+            color: #ffe6cc;
         }
 
         .container {
@@ -106,7 +107,9 @@
     <div class="container">
         <h1>Contactează-ne</h1>
         <p>Pentru detalii suplimentare, completează formularul de mai jos.</p>
-        <form action="#" method="post">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="032839e5-e553-4158-8f2c-15eb0fdeefd0">
+
             <div class="form-group">
                 <label for="nume">Nume</label>
                 <input type="text" id="nume" name="nume" required>

@@ -3,96 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijuletul de Sâmbătă</title>
+    <title>SnackVibe - Magazin</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f5f5f5;
+            background: linear-gradient(to bottom right, #ffe6cc, #fffaf0);
+            color: #3e2f2f;
             text-align: center;
-            color: #333;
         }
 
         nav {
-            background-color: #d9c2af;
+            background-color: #a97c50;
             padding: 15px;
             text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
-            color: white;
+            color: #fff9f4;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             margin: 0 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: black;
+            color: #ffe6cc;
         }
 
         .container {
-            padding-top: 80px;
+            padding: 100px 20px 40px;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            font-size: 18px;
+            color: #6b4f3b;
+            margin-bottom: 30px;
         }
 
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
+            gap: 25px;
         }
 
         .product {
-            background: white;
+            background: #fff9f4;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
             padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
         }
 
         .product img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
         }
 
         .product h2 {
-            margin: 10px 0;
+            margin-top: 10px;
             font-size: 20px;
         }
 
         .product p {
-            color: #666;
-            margin-bottom: 10px;
+            color: #715b4e;
+            font-size: 15px;
         }
 
         .buy-btn {
             display: inline-block;
-            padding: 10px 15px;
-            background: #d9c2af;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #a97c50;
             color: white;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
             transition: background 0.3s;
         }
 
         .buy-btn:hover {
-            background: #c0a88c;
+            background-color: #8c6642;
+        }
+
+        .services-section {
+            background-color: #fff4e6;
+            padding: 60px 20px;
+            margin-top: 50px;
+        }
+
+        .services-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #4e382d;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .service {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .service img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .service h3 {
+            margin-bottom: 10px;
+            color: #7a5538;
+        }
+
+        .service p {
+            font-size: 15px;
+            color: #5a4434;
         }
     </style>
 </head>
@@ -101,11 +163,12 @@
         <a href="hui.html">Acasă</a>
         <a href="pagina2.html">Magazin</a>
         <a href="contact.html">Contact</a>
-        <a href="cos.html">Cos</a>
+        <a href="cos.html">Coș</a>
     </nav>
 
     <div class="container">
-        <h1>Produse Disponibile</h1>
+        <h1>🎉 Produsele Noastre</h1>
+        <p class="subtitle">Snacks-uri picante și băuturi non-alcoolice pentru ieșiri memorabile cu prietenii</p>
         <div class="products">
             <div class="product">
                 <img src="takis 1.jpg" alt="Takis">
@@ -114,10 +177,10 @@
                 <a href="takis.html" class="buy-btn">Cumpără</a>
             </div>
             <div class="product">
-                <img src="buci condimentate.jpg" alt="Nuci condimentate">
+                <img src="nuci condimentate.jpg" alt="Nuci condimentate">
                 <h2>Nuci Condimentate</h2>
                 <p>Mix de nuci crocante.</p>
-                <a href="bucicondimentate.html" class="buy-btn">Cumpără</a>
+                <a href="nucicondimentate.html" class="buy-btn">Cumpără</a>
             </div>
             <div class="product">
                 <img src="drink1.png" alt="Limonadă">
@@ -129,7 +192,7 @@
                 <img src="drink2.png" alt="Cocktail fără alcool">
                 <h2>Cocktail</h2>
                 <p>Arome exotice.</p>
-                <a href="cockmij.html" class="buy-btn">Cumpără</a>
+                <a href="cocktail.html" class="buy-btn">Cumpără</a>
             </div>
             <div class="product">
                 <img src="chipsuri.png" alt="Chipsuri">
@@ -168,7 +231,7 @@
                 <a href="napolitane.html" class="buy-btn">Cumpără</a>
             </div>
             <div class="product">
-                <img src="miere.jpg" alt="Miere de albine">
+                <img src="miere.png" alt="Miere de albine">
                 <h2>Miere de Albine</h2>
                 <p>Naturală și hrănitoare.</p>
                 <a href="miere.html" class="buy-btn">Cumpără</a>
@@ -178,6 +241,27 @@
                 <h2>Bomboane</h2>
                 <p>Dulciuri pentru toate gusturile.</p>
                 <a href="bomboane.html" class="buy-btn">Cumpără</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-section">
+        <h2>🎈 Servicii pentru Petreceri</h2>
+        <div class="services">
+            <div class="service">
+                <img src="limo.png" alt="Bar de Limonadă">
+                <h3>Bar de Limonadă</h3>
+                <p>Răcorește-ți invitații cu un bar complet de limonade naturale și colorate.</p>
+            </div>
+            <div class="service">
+                <img src="coltsnack.jpg" alt="Colț cu Gustări">
+                <h3>Colț cu Gustări</h3>
+                <p>O masă decorată cu snacks-uri picante și dulci pentru toți oaspeții.</p>
+            </div>
+            <div class="service">
+                <img src="cocktailuri.png" alt="Set de Cocktailuri">
+                <h3>Set de Cocktailuri</h3>
+                <p>Experiență tropicală cu cocktailuri non-alcoolice pentru toate vârstele.</p>
             </div>
         </div>
     </div>

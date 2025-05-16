@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SnackVibe - Fursecuri Ciudate</title>
+    <title>SnackVibe - Cocktail</title>
     <style>
         * {
             margin: 0;
@@ -11,14 +11,15 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
             background-color: #f5f5f5;
             color: #3e3e3e;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            text-align: center;
         }
+
         nav {
             background-color: #a97c50;
             padding: 15px;
@@ -43,6 +44,7 @@
         nav a:hover {
             color: #ffe6cc;
         }
+
         main.container {
             flex-grow: 1;
             padding-top: 100px;
@@ -52,6 +54,7 @@
             padding-left: 15px;
             padding-right: 15px;
         }
+
         .product-page {
             max-width: 720px;
             width: 100%;
@@ -62,9 +65,11 @@
             text-align: center;
             transition: transform 0.3s ease;
         }
+
         .product-page:hover {
             transform: scale(1.05);
         }
+
         .product-page img {
             width: 100%;
             height: 300px;
@@ -74,33 +79,40 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
+
         .product-page img:hover {
             transform: scale(1.1);
         }
+
         .product-page h1 {
             font-size: 28px;
             color: #5b3e1b;
             margin-bottom: 12px;
         }
+
         .product-page p {
             color: #666;
             margin-bottom: 20px;
             font-size: 16px;
         }
+
         .pret {
             font-size: 22px;
             font-weight: 700;
             color: #a97c50;
             margin-bottom: 20px;
         }
+
         .cantitate {
             margin-bottom: 25px;
             font-size: 18px;
         }
+
         .cantitate label {
             font-weight: 700;
             margin-right: 10px;
         }
+
         .cantitate input {
             width: 70px;
             padding: 7px 10px;
@@ -110,10 +122,12 @@
             text-align: center;
             transition: border-color 0.3s ease;
         }
+
         .cantitate input:focus {
             border-color: #a97c50;
             outline: none;
         }
+
         .button, .back-btn {
             padding: 12px 25px;
             font-size: 18px;
@@ -127,24 +141,29 @@
             user-select: none;
             margin: 10px;
         }
+
         .button {
             background-color: #a97c50;
             color: #fff;
             box-shadow: 0 4px 10px rgba(169,124,80,0.5);
         }
+
         .button:hover {
             background-color: #8c6642;
             transform: scale(1.05);
         }
+
         .back-btn {
             background-color: #aaa;
             color: #fff;
             box-shadow: 0 4px 10px rgba(170,170,170,0.5);
         }
+
         .back-btn:hover {
             background-color: #888;
             transform: scale(1.05);
         }
+
         #toast {
             visibility: hidden;
             min-width: 250px;
@@ -163,21 +182,36 @@
             opacity: 0;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
+
         #toast.show {
             visibility: visible;
             opacity: 1;
         }
+
         @media (max-width: 600px) {
             .product-page {
                 padding: 20px 15px;
             }
+
             nav a {
                 font-size: 16px;
                 margin: 0 10px;
             }
+
             .cantitate input {
                 width: 60px;
             }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
         }
     </style>
 </head>
@@ -190,51 +224,62 @@
     </nav>
 
     <main class="container" role="main">
-        <article class="product-page" aria-labelledby="product-title" aria-describedby="product-desc product-price">
-            <img src="fursecuri.jpg" alt="Fursecuri ciudate, crocante și delicioase" style="height: 300px;width: 300px;"/>
-            <h1 id="product-title">Fursecuri ciudate</h1>
-            <p id="product-desc">Delicioase și crocante, perfecte pentru orice moment.</p>
-            <div class="pret" id="product-price">10 EUR</div>
+        <article class="product-page" aria-label="Detalii produs Cocktail">
+            <img src="drink2.png" alt="Cocktail" style="height: 300px;width: 300px;"/>
+            <h1>Cocktail</h1>
+            <p>O băutură răcoritoare și delicioasă.</p>
+            <div class="pret" aria-live="polite" aria-atomic="true">10 EUR</div>
+
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
-                <input type="number" id="cantitate" name="cantitate" value="1" min="1" aria-label="Cantitate de fursecuri" />
+                <input 
+                    type="number" 
+                    id="cantitate" 
+                    name="cantitate" 
+                    value="1" 
+                    min="1" 
+                    max="99"
+                    aria-describedby="cantitateHelp"
+                />
+                <span id="cantitateHelp" class="sr-only">Introduceți numărul de bucăți dorite, între 1 și 99</span>
             </div>
-            <button class="button" onclick="addProductToCart()">Adaugă în Coș</button>
-            <a href="pagina2.html" class="back-btn">Înapoi la magazin</a>
+
+            <button class="button" onclick="addProductToCart()" aria-label="Adaugă Cocktail în coș">Adaugă în Coș</button>
+            <a href="pagina2.html" class="back-btn" role="link" aria-label="Înapoi la magazin">Înapoi la magazin</a>
         </article>
     </main>
 
     <div id="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
     <script>
-        function showToast(message, duration = 3000) {
+        function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, duration);
+            }, 3000);
         }
 
         function addProductToCart() {
             const quantityInput = document.getElementById("cantitate");
-            const quantity = parseInt(quantityInput.value);
+            let quantity = parseInt(quantityInput.value);
 
-            if (isNaN(quantity) || quantity < 1) {
-                showToast("Vă rugăm să introduceți o cantitate validă!");
+            if (isNaN(quantity) || quantity < 1 || quantity > 99) {
+                alert("Te rog să introduci o cantitate validă între 1 și 99.");
                 quantityInput.focus();
                 return;
             }
 
             const product = {
-                id: "fursecuri_001",
-                name: "Fursecuri ciudate",
+                id: "cocktail_001",
+                name: "Cocktail",
                 price: 10,
                 quantity: quantity
             };
 
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            const existingProduct = cart.find(item => item.id === product.id);
+            let existingProduct = cart.find(item => item.id === product.id);
 
             if (existingProduct) {
                 existingProduct.quantity += quantity;
