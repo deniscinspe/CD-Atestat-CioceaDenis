@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SnackVibe - Bomboane Picante</title>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SnackVibe - Bomboane Picante</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-        background-color: #f5f5f5;
-        color: #3e3e3e;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+        body {
+            background-color: #f5f5f5;
+            color: #3e3e3e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    nav {
+        nav {
             background-color: #a97c50;
             padding: 15px;
             text-align: center;
@@ -45,250 +46,248 @@
             color: #ffe6cc;
         }
 
-    .container {
-        flex-grow: 1;
-        padding-top: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .product-page {
-        max-width: 720px;
-        width: 100%;
-        background: #fff;
-        padding: 30px 25px;
-        border-radius: 15px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        text-align: center;
-        transition: transform 0.3s ease;
-    }
-
-    .product-page:hover {
-        transform: scale(1.05);
-    }
-
-    .product-page img {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 15px;
-        transition: transform 0.3s ease;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-page img:hover {
-        transform: scale(1.1);
-    }
-
-    .product-page h1 {
-        font-size: 28px;
-        color: #5b3e1b;
-        margin-bottom: 12px;
-    }
-
-    .product-page p {
-        color: #666;
-        margin-bottom: 20px;
-        font-size: 16px;
-    }
-
-    .pret {
-        font-size: 22px;
-        font-weight: 700;
-        color: #a97c50;
-        margin-bottom: 20px;
-    }
-
-    .cantitate {
-        margin-bottom: 25px;
-        font-size: 18px;
-    }
-
-    .cantitate label {
-        font-weight: 700;
-        margin-right: 10px;
-    }
-
-    .cantitate input {
-        width: 70px;
-        padding: 7px 10px;
-        font-size: 16px;
-        border: 2px solid #d9c2af;
-        border-radius: 6px;
-        text-align: center;
-        transition: border-color 0.3s ease;
-    }
-
-    .cantitate input:focus {
-        border-color: #a97c50;
-        outline: none;
-    }
-
-    .button, .back-btn {
-        padding: 12px 25px;
-        font-size: 18px;
-        font-weight: 700;
-        border-radius: 30px;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        user-select: none;
-        margin: 10px;
-    }
-
-    .button {
-        background-color: #a97c50;
-        color: #fff;
-        box-shadow: 0 4px 10px rgba(169, 124, 80, 0.5);
-    }
-
-    .button:hover {
-        background-color: #8c6642;
-        transform: scale(1.05);
-    }
-
-    .back-btn {
-        background-color: #aaa;
-        color: #fff;
-        box-shadow: 0 4px 10px rgba(170, 170, 170, 0.5);
-    }
-
-    .back-btn:hover {
-        background-color: #888;
-        transform: scale(1.05);
-    }
-
-    #toast {
-        visibility: hidden;
-        min-width: 250px;
-        background-color: #4BB543;
-        color: white;
-        text-align: center;
-        border-radius: 30px;
-        padding: 16px;
-        position: fixed;
-        z-index: 1001;
-        left: 50%;
-        bottom: 40px;
-        transform: translateX(-50%);
-        font-size: 17px;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        transition: opacity 0.5s ease, visibility 0.5s;
-    }
-
-    #toast.show {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    @media (max-width: 600px) {
-        .product-page {
-            padding: 20px 15px;
+        .container {
+            flex-grow: 1;
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
-        nav a {
+        .product-page {
+            max-width: 720px;
+            width: 100%;
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-page:hover {
+            transform: scale(1.05);
+        }
+
+        .product-page img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-page img:hover {
+            transform: scale(1.1);
+        }
+
+        .product-page h1 {
+            font-size: 28px;
+            color: #5b3e1b;
+            margin-bottom: 12px;
+        }
+
+        .product-page p {
+            color: #666;
+            margin-bottom: 20px;
             font-size: 16px;
-            margin: 0 10px;
+        }
+
+        .pret {
+            font-size: 22px;
+            font-weight: 700;
+            color: #a97c50;
+            margin-bottom: 20px;
+        }
+
+        .cantitate {
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .cantitate label {
+            font-weight: 700;
+            margin-right: 10px;
         }
 
         .cantitate input {
-            width: 60px;
+            width: 70px;
+            padding: 7px 10px;
+            font-size: 16px;
+            border: 2px solid #d9c2af;
+            border-radius: 6px;
+            text-align: center;
+            transition: border-color 0.3s ease;
         }
-    }
 
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        border: 0;
-    }
-</style>
+        .cantitate input:focus {
+            border-color: #a97c50;
+            outline: none;
+        }
+
+        .button,
+        .back-btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            user-select: none;
+            margin: 10px;
+        }
+
+        .button {
+            background-color: #a97c50;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(169, 124, 80, 0.5);
+        }
+
+        .button:hover {
+            background-color: #8c6642;
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            background-color: #aaa;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(170, 170, 170, 0.5);
+        }
+
+        .back-btn:hover {
+            background-color: #888;
+            transform: scale(1.05);
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #4BB543;
+            color: white;
+            text-align: center;
+            border-radius: 30px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1001;
+            left: 50%;
+            bottom: 40px;
+            transform: translateX(-50%);
+            font-size: 17px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .product-page {
+                padding: 20px 15px;
+            }
+
+            nav a {
+                font-size: 16px;
+                margin: 0 10px;
+            }
+
+            .cantitate input {
+                width: 60px;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
 </head>
+
 <body>
-<nav>
-    <a href="hui.html">Acasă</a>
-    <a href="pagina2.html">Magazin</a>
-    <a href="contact.html">Contact</a>
-    <a href="cos.html">Coș</a>
-</nav>
+    <nav>
+        <a href="hui.html">Acasă</a>
+        <a href="pagina2.html">Magazin</a>
+        <a href="contact.html">Contact</a>
+        <a href="cos.html">Coș</a>
+    </nav>
 
-<main class="container" role="main">
-    <article class="product-page" aria-label="Detalii produs Bomboane picante">
-        <img src="bomboane.jpeg" alt="Pachet de bomboane picante"style="height: 300px;width: 300px;" />
-        <h1>Bomboane picante</h1>
-        <p>Gust intens și picant! Perfect pentru iubitorii de senzații tari.</p>
-        <div class="pret" aria-live="polite" aria-atomic="true">10 EUR</div>
+    <main class="container" role="main">
+        <article class="product-page" aria-label="Detalii produs Bomboane picante">
+            <img src="bomboane.jpeg" alt="Pachet de bomboane picante" style="height: 300px;width: 300px;" />
+            <h1>Bomboane picante</h1>
+            <p>Gust intens și picant! Perfect pentru iubitorii de senzații tari.</p>
+            <div class="pret" aria-live="polite" aria-atomic="true">10 EUR</div>
 
-        <div class="cantitate">
-            <label for="cantitate">Cantitate:</label>
-            <input 
-                type="number" 
-                id="cantitate" 
-                name="cantitate" 
-                value="1" 
-                min="1" 
-                aria-describedby="cantitateHelp"
-            />
-            <span id="cantitateHelp" class="sr-only">Introduceți numărul de bucăți dorite, minim 1</span>
-        </div>
+            <div class="cantitate">
+                <label for="cantitate">Cantitate:</label>
+                <input type="number" id="cantitate" name="cantitate" value="1" min="1"
+                    aria-describedby="cantitateHelp" />
+                <span id="cantitateHelp" class="sr-only">Introduceți numărul de bucăți dorite, minim 1</span>
+            </div>
 
-        <button class="button" onclick="addProductToCart()" aria-label="Adaugă Bomboane picante în coș">Adaugă în Coș</button>
-        <a href="pagina2.html" class="back-btn" role="link" aria-label="Înapoi la magazin">Înapoi la magazin</a>
-    </article>
-</main>
+            <button class="button" onclick="addProductToCart()" aria-label="Adaugă Bomboane picante în coș">Adaugă în
+                Coș</button>
+            <a href="pagina2.html" class="back-btn" role="link" aria-label="Înapoi la magazin">Înapoi la magazin</a>
+        </article>
+    </main>
 
-<div id="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+    <div id="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
-<script>
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-    }
-
-    function addProductToCart() {
-        const quantityInput = document.getElementById("cantitate");
-        let quantity = parseInt(quantityInput.value);
-
-        if (isNaN(quantity) || quantity < 1) {
-            alert("Te rog să introduci o cantitate validă (minim 1).");
-            quantityInput.focus();
-            return;
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
-        const product = {
-            id: "bomboane_picante",
-            name: "Bomboane picante",
-            price: 10,
-            quantity: quantity
-        };
+        function addProductToCart() {
+            const quantityInput = document.getElementById("cantitate");
+            let quantity = parseInt(quantityInput.value);
 
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        let existingProduct = cart.find(item => item.id === product.id);
+            if (isNaN(quantity) || quantity < 1) {
+                alert("Te rog să introduci o cantitate validă (minim 1).");
+                quantityInput.focus();
+                return;
+            }
 
-        if (existingProduct) {
-            existingProduct.quantity += quantity;
-        } else {
-            cart.push(product);
+            const product = {
+                id: "bomboane_picante",
+                name: "Bomboane picante",
+                price: 10,
+                quantity: quantity
+            };
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let existingProduct = cart.find(item => item.id === product.id);
+
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            showToast("Produsul a fost adăugat în coș!");
         }
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-        showToast("Produsul a fost adăugat în coș!");
-    }
-</script>
+    </script>
 </body>
+
 </html>

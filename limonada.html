@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,6 +12,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
             background-color: #f5f5f5;
             color: #3e3e3e;
@@ -19,6 +21,7 @@
             display: flex;
             flex-direction: column;
         }
+
         nav {
             background-color: #a97c50;
             padding: 15px;
@@ -43,6 +46,7 @@
         nav a:hover {
             color: #ffe6cc;
         }
+
         main.container {
             flex-grow: 1;
             padding-top: 100px;
@@ -51,6 +55,7 @@
             padding-left: 15px;
             padding-right: 15px;
         }
+
         .product-page {
             background: white;
             padding: 25px 20px;
@@ -61,45 +66,54 @@
             margin: auto;
             transition: transform 0.3s ease;
         }
+
         .product-page:hover {
             transform: scale(1.03);
         }
+
         .product-page img {
             width: 100%;
             max-height: 300px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
+
         .product-page img:hover {
             transform: scale(1.1);
         }
+
         .product-page h1 {
             font-size: 28px;
             color: #5b3e1b;
             margin-bottom: 15px;
         }
+
         .product-page p {
             font-size: 16px;
             color: #666;
             margin-bottom: 20px;
         }
+
         .pret {
             font-size: 22px;
             font-weight: 700;
             color: #a97c50;
             margin-bottom: 20px;
         }
+
         .cantitate {
             margin-bottom: 25px;
             font-size: 18px;
         }
+
         .cantitate label {
             font-weight: 700;
             margin-right: 10px;
         }
+
         .cantitate input {
             width: 70px;
             padding: 7px 10px;
@@ -109,11 +123,14 @@
             text-align: center;
             transition: border-color 0.3s ease;
         }
+
         .cantitate input:focus {
             border-color: #a97c50;
             outline: none;
         }
-        .button, .back-btn {
+
+        .button,
+        .back-btn {
             padding: 12px 25px;
             font-size: 18px;
             font-weight: 700;
@@ -126,24 +143,29 @@
             user-select: none;
             margin: 10px;
         }
+
         .button {
             background-color: #a97c50;
             color: #fff;
-            box-shadow: 0 4px 10px rgba(169,124,80,0.5);
+            box-shadow: 0 4px 10px rgba(169, 124, 80, 0.5);
         }
+
         .button:hover {
             background-color: #8c6642;
             transform: scale(1.05);
         }
+
         .back-btn {
             background-color: #aaa;
             color: #fff;
-            box-shadow: 0 4px 10px rgba(170,170,170,0.5);
+            box-shadow: 0 4px 10px rgba(170, 170, 170, 0.5);
         }
+
         .back-btn:hover {
             background-color: #888;
             transform: scale(1.05);
         }
+
         #toast {
             visibility: hidden;
             min-width: 250px;
@@ -158,28 +180,33 @@
             bottom: 40px;
             transform: translateX(-50%);
             font-size: 17px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
+
         #toast.show {
             visibility: visible;
             opacity: 1;
         }
+
         @media (max-width: 600px) {
             nav a {
                 font-size: 16px;
                 margin: 0 10px;
             }
+
             .cantitate input {
                 width: 60px;
             }
+
             .product-page {
                 padding: 20px 15px;
             }
         }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="hui.html">Acasă</a>
@@ -190,13 +217,15 @@
 
     <main class="container" role="main">
         <article class="product-page" aria-labelledby="product-title" aria-describedby="product-desc product-price">
-            <img src="drink1.png" alt="Limonada, băutură răcoritoare cu lămâie proaspătă"style="height: 300px;width: 300px;" />
+            <img src="drink1.png" alt="Limonada, băutură răcoritoare cu lămâie proaspătă"
+                style="height: 300px;width: 300px;" />
             <h1 id="product-title">Limonada</h1>
             <p id="product-desc">Lamaie proaspătă, răcoritoare.</p>
             <div class="pret" id="product-price">3 EUR</div>
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
-                <input type="number" id="cantitate" name="cantitate" value="1" min="1" aria-label="Cantitate limonadă" />
+                <input type="number" id="cantitate" name="cantitate" value="1" min="1"
+                    aria-label="Cantitate limonadă" />
             </div>
             <button class="button" onclick="addProductToCart()">Adaugă în Coș</button>
             <a href="pagina2.html" class="back-btn">Înapoi la magazin</a>
@@ -246,4 +275,5 @@
         }
     </script>
 </body>
+
 </html>

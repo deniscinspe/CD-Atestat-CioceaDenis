@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -114,7 +115,8 @@
             outline: none;
         }
 
-        .buy-btn, .back-btn {
+        .buy-btn,
+        .back-btn {
             display: inline-block;
             padding: 12px 25px;
             background: #a97c50;
@@ -182,7 +184,8 @@
                 width: 60px;
             }
 
-            .buy-btn, .back-btn {
+            .buy-btn,
+            .back-btn {
                 padding: 10px 20px;
                 font-size: 16px;
                 margin: 10px 10px;
@@ -190,6 +193,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="hui.html">Acasă</a>
@@ -200,16 +204,18 @@
 
     <main class="container" role="main">
         <section class="product-page" aria-label="Detalii produs Nuci Condimentate">
-            <img src="nuci condimentate.jpg" alt="Pachet de nuci condimentate" style="height: 300px;width: 300px;"/>
+            <img src="nuci condimentate.jpg" alt="Pachet de nuci condimentate" style="height: 300px;width: 300px;" />
             <h1>Nuci Condimentate</h1>
             <p>Gust intens de nuci, perfect pentru iubitorii de snacksuri.</p>
             <div class="pret" aria-live="polite" aria-atomic="true">10.99 EUR</div>
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
-                <input type="number" id="cantitate" name="cantitate" value="1" min="1" step="1" aria-describedby="cantitateHelp" />
+                <input type="number" id="cantitate" name="cantitate" value="1" min="1" step="1"
+                    aria-describedby="cantitateHelp" />
                 <span id="cantitateHelp" class="sr-only">Introduceți cantitatea dorită, minim 1</span>
             </div>
-            <button class="buy-btn" onclick="addProductToCart()" aria-label="Adaugă Nuci Condimentate în coș">Adaugă în Coș</button>
+            <button class="buy-btn" onclick="addProductToCart()" aria-label="Adaugă Nuci Condimentate în coș">Adaugă în
+                Coș</button>
             <a href="pagina2.html" class="back-btn" role="link" aria-label="Înapoi la magazin">Înapoi la magazin</a>
         </section>
     </main>
@@ -285,4 +291,5 @@
         }
     </style>
 </body>
+
 </html>

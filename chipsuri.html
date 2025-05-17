@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -128,7 +129,8 @@
             outline: none;
         }
 
-        .button, .back-btn {
+        .button,
+        .back-btn {
             padding: 12px 25px;
             font-size: 18px;
             font-weight: 700;
@@ -210,11 +212,12 @@
             padding: 0;
             margin: -1px;
             overflow: hidden;
-            clip: rect(0,0,0,0);
+            clip: rect(0, 0, 0, 0);
             border: 0;
         }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="hui.html">Acasă</a>
@@ -225,21 +228,15 @@
 
     <main class="container" role="main">
         <article class="product-page" aria-label="Detalii produs Viva">
-            <img src="chipsuri.png" alt="Pachet Viva"style="height: 300px;width: 300px;" />
+            <img src="chipsuri.png" alt="Pachet Viva" style="height: 300px;width: 300px;" />
             <h1>Viva</h1>
             <p>Gustul care îți trezește simțurile!</p>
             <div class="pret" aria-live="polite" aria-atomic="true">6 EUR</div>
 
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
-                <input 
-                    type="number" 
-                    id="cantitate" 
-                    name="cantitate" 
-                    value="1" 
-                    min="1" 
-                    aria-describedby="cantitateHelp"
-                />
+                <input type="number" id="cantitate" name="cantitate" value="1" min="1"
+                    aria-describedby="cantitateHelp" />
                 <span id="cantitateHelp" class="sr-only">Introduceți numărul de bucăți dorite, minim 1</span>
             </div>
 
@@ -291,4 +288,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -235,7 +235,7 @@
 
     <main class="container" role="main">
         <article class="product-page" aria-label="Detalii produs Napolitane picante">
-            <img src="napolitane.jpg" alt="Pachet de napolitane picante"style="height: 300px;width: 300px;" />
+            <img src="napolitane.jpg" alt="Pachet de napolitane picante" style="height: 300px;width: 300px;" />
             <h1>Napolitane picante</h1>
             <p>Un gust exploziv, perfect pentru cei care iubesc condimentele tari!</p>
             <div class="pret" aria-live="polite" aria-atomic="true">4 EUR</div>
@@ -306,7 +306,6 @@
 
             localStorage.setItem("cart", JSON.stringify(cart));
 
-            // Dezactivează butonul temporar pentru a preveni click-uri multiple
             addButton.disabled = true;
 
             showToast("Produsul a fost adăugat în coș!");

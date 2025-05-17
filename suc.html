@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -124,7 +125,8 @@
             outline: none;
         }
 
-        .button, .back-btn {
+        .button,
+        .back-btn {
             padding: 12px 25px;
             font-size: 18px;
             font-weight: 700;
@@ -202,6 +204,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="hui.html">Acasă</a>
@@ -212,25 +215,20 @@
 
     <main class="container" role="main">
         <article class="product-page" aria-label="Detalii produs Suc de ardei iute">
-            <img src="suc.jpg" alt="Sticlă cu suc de ardei iute"style="height: 300px;width: 300px;" />
+            <img src="suc.jpg" alt="Sticlă cu suc de ardei iute" style="height: 300px;width: 300px;" />
             <h1>Suc de ardei iute</h1>
             <p>O combinație unică de arome îndrăznețe, perfectă pentru iubitorii de senzații tari!</p>
             <div class="pret" aria-live="polite" aria-atomic="true">2 EUR</div>
 
             <div class="cantitate">
                 <label for="cantitate">Cantitate:</label>
-                <input 
-                    type="number" 
-                    id="cantitate" 
-                    name="cantitate" 
-                    value="1" 
-                    min="1" 
-                    aria-describedby="cantitateHelp"
-                />
+                <input type="number" id="cantitate" name="cantitate" value="1" min="1"
+                    aria-describedby="cantitateHelp" />
                 <span id="cantitateHelp" class="sr-only">Introduceți numărul de bucăți dorite, minim 1</span>
             </div>
 
-            <button class="button" onclick="addProductToCart()" aria-label="Adaugă Suc de ardei iute în coș">Adaugă în Coș</button>
+            <button class="button" onclick="addProductToCart()" aria-label="Adaugă Suc de ardei iute în coș">Adaugă în
+                Coș</button>
             <a href="pagina2.html" class="back-btn" role="link" aria-label="Înapoi la magazin">Înapoi la magazin</a>
         </article>
     </main>
@@ -286,9 +284,10 @@
             padding: 0;
             margin: -1px;
             overflow: hidden;
-            clip: rect(0,0,0,0);
+            clip: rect(0, 0, 0, 0);
             border: 0;
         }
     </style>
 </body>
+
 </html>
