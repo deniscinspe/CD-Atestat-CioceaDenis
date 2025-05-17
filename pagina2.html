@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnackVibe - Gustă vibe-ul!</title>
+    <title>SnackVibe - Magazin</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            background-color: #f7f4f1;
-            color: #333;
+            background: linear-gradient(to bottom right, #ffe6cc, #fffaf0);
+            color: #3e2f2f;
+            text-align: center;
         }
 
         nav {
@@ -44,159 +45,236 @@
         }
 
         .container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            padding-top: 80px;
-            overflow: hidden;
+            padding: 100px 20px 40px;
+            max-width: 1300px;
+            margin: auto;
         }
 
-        .container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
         }
 
-        .hero {
-            max-width: 800px;
-            padding: 30px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            color: white;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 60px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 24px;
+        p.subtitle {
+            font-size: 18px;
+            color: #6b4f3b;
             margin-bottom: 30px;
         }
 
-        .explore-btn {
-            background-color: white;
-            border: 2px solid black;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
 
-        .explore-btn a {
+        .product {
+            background: #fff9f4;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+            padding: 15px;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .product h2 {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .product p {
+            color: #715b4e;
+            font-size: 15px;
+        }
+
+        .buy-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #a97c50;
+            color: white;
+            border-radius: 30px;
             text-decoration: none;
-            color: black;
+            font-weight: bold;
+            transition: background 0.3s;
         }
 
-        .explore-btn:hover {
-            background-color: rgb(217, 194, 175);
+        .buy-btn:hover {
+            background-color: #8c6642;
         }
 
-        .about {
+        .services-section {
+            background-color: #fff4e6;
+            padding: 60px 20px;
+            margin-top: 50px;
+        }
+
+        .services-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #4e382d;
+        }
+
+        .services {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             justify-content: center;
             gap: 40px;
-            padding: 80px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .service {
             background-color: #fff;
-            color: #333;
-        }
-
-        .about-text {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .about-text h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            font-size: 20px;
-            line-height: 1.7;
-        }
-
-        .about-image {
-            flex: 1;
-            max-width: 500px;
-        }
-
-        .about-image img {
-            width: 100%;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
-        @media (max-width: 900px) {
-            .about {
-                flex-direction: column;
-                text-align: center;
-            }
+        .service img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
 
-            .about-text,
-            .about-image {
-                max-width: 90%;
-            }
+        .service h3 {
+            margin-bottom: 10px;
+            color: #7a5538;
+        }
+
+        .service p {
+            font-size: 15px;
+            color: #5a4434;
         }
     </style>
 </head>
 
 <body>
-
     <nav>
-        <a href="index.html">Acasă</a>
+        <a href="hui.html">Acasă</a>
         <a href="pagina2.html">Magazin</a>
         <a href="contact.html">Contact</a>
         <a href="cos.html">Coș</a>
     </nav>
 
-    <section class="container">
-        <video autoplay muted loop playsinline>
-            <source src="party.mp4" type="video/mp4">
-
-        </video>
-
-        <div class="hero">
-            <h1>SnackVibe</h1>
-            <p>Băuturi non-alcoolice & snacks-uri picante pentru ieșiri cu gust!</p>
-            <button class="explore-btn">
-                <a href="pagina2.html">Explorează produsele</a>
-            </button>
+    <div class="container">
+        <h1>🎉 Produsele Noastre</h1>
+        <p class="subtitle">Snacks-uri picante și băuturi non-alcoolice pentru ieșiri memorabile cu prietenii</p>
+        <div class="products">
+            <div class="product">
+                <img src="takis 1.jpg" alt="Takis">
+                <h2>Takis</h2>
+                <p>Gust intens și picant!</p>
+                <a href="takis.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="nuci condimentate.jpg" alt="Nuci condimentate">
+                <h2>Nuci Condimentate</h2>
+                <p>Mix de nuci crocante.</p>
+                <a href="nucicondimentate.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="drink1.png" alt="Limonadă">
+                <h2>Limonadă</h2>
+                <p>Răcoritoare și naturală.</p>
+                <a href="limonada.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="drink2.png" alt="Cocktail fără alcool">
+                <h2>Cocktail</h2>
+                <p>Arome exotice.</p>
+                <a href="cockmij.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="chipsuri.png" alt="Chipsuri">
+                <h2>Chipsuri</h2>
+                <p>Crocante și delicioase.</p>
+                <a href="chipsuri.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="ciocolata.jpg" alt="Ciocolată">
+                <h2>Ciocolată</h2>
+                <p>Dulce și savuroasă.</p>
+                <a href="ciocolata.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="suc.jpg" alt="Suc Natural">
+                <h2>Suc Natural</h2>
+                <p>100% fructe, fără adaosuri.</p>
+                <a href="suc.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="fursecuri.jpg" alt="Fursecuri">
+                <h2>Fursecuri</h2>
+                <p>Fragede și aromate.</p>
+                <a href="fursecuri.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="ceai.jpg" alt="Ceai">
+                <h2>Ceai</h2>
+                <p>Plante aromate pentru relaxare.</p>
+                <a href="ceai.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="napolitane.jpg" alt="Napolitane">
+                <h2>Napolitane</h2>
+                <p>Delicate și crocante.</p>
+                <a href="napolitane.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="miere.png" alt="Miere de albine">
+                <h2>Miere de Albine</h2>
+                <p>Naturală și hrănitoare.</p>
+                <a href="miere.html" class="buy-btn">Cumpără</a>
+            </div>
+            <div class="product">
+                <img src="bomboane.jpeg" alt="Bomboane">
+                <h2>Bomboane</h2>
+                <p>Dulciuri pentru toate gusturile.</p>
+                <a href="bomboane.html" class="buy-btn">Cumpără</a>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section class="about">
-        <div class="about-text">
-            <h2>Despre noi</h2>
-            <p>
-                SnackVibe a fost creat dintr-o simplă idee: să facem ieșirile cu prietenii mai savuroase. Credem în
-                puterea gustului
-                de a aduce oamenii împreună. De la băuturi răcoritoare non-alcoolice până la snacks-uri picante care te
-                surprind, fiecare produs
-                este ales cu grijă pentru vibe-ul potrivit. Suntem tineri, energici și mereu în căutarea gustului ideal
-                pentru chill, party sau picnic.
-            </p>
+    <div class="services-section">
+        <h2>🎈 Servicii pentru Petreceri</h2>
+        <div class="services">
+            <div class="service">
+                <img src="limo.png" alt="Bar de Limonadă">
+                <h3>Bar de Limonadă</h3>
+                <p>Răcorește-ți invitații cu un bar complet de limonade naturale și colorate.</p>
+            </div>
+            <div class="service">
+                <img src="coltsnack.jpg" alt="Colț cu Gustări">
+                <h3>Colț cu Gustări</h3>
+                <p>O masă decorată cu snacks-uri picante și dulci pentru toți oaspeții.</p>
+            </div>
+            <div class="service">
+                <img src="cocktailuri.png" alt="Set de Cocktailuri">
+                <h3>Set de Cocktailuri</h3>
+                <p>Experiență tropicală cu cocktailuri non-alcoolice pentru toate vârstele.</p>
+            </div>
+            <div class="service">
+                <img src="houseparty.jpg" alt="houseparty">
+                <h3>Petrecere cu livrare la domiciliu</h3>
+                <p>Dacă ți-ai dorit vreodată să mergi în club, dar bugetul nu ți-a permis, acest pachet îți oferă o
+                    experiență autentică, chiar la tine acasă</p>
+            </div>
+            <h2>Pentru mai multe informații despre aceste pachete, vă invităm să completați formularul de pe pagina de
+                contact</h2>
         </div>
-        <div class="about-image">
-            <img src="ciucas.jpg" alt="Produse SnackVibe">
-        </div>
-    </section>
-
+    </div>
 </body>
 
 </html>
